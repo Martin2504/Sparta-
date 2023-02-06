@@ -1,4 +1,4 @@
-package com.sparta.FirstJavaLesson;
+package com.sparta.a_FirstJavaLesson;
 
 import java.util.Scanner;
 

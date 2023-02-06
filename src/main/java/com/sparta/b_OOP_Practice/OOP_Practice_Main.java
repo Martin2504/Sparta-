@@ -1,6 +1,6 @@
 package com.sparta.b_OOP_Practice;
 
-public class Main {
+public class OOP_Practice_Main {
 
 
     public static void main(String[] args) {
