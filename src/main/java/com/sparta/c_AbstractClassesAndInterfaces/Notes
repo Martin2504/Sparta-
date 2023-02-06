@@ -1,0 +1,5 @@
+Abstract class - used where it doesn't make dense to instantiate the class itself, but the point is to inherit from it,
+                    then instantiate the subclasses.
+
+Interfaces - like a contract / blueprint
+                - implementing classes have to obey by their contract
