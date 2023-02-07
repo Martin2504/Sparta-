@@ -3,24 +3,25 @@ package com.sparta.String_Palindrome_Task_Test;
 import static com.sparta.e_String_Palindrome_Task.Main.isPalindrome;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-
-
-
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 public class MainTest {
 
-    @Test
-    @DisplayName("Testing a palindrome")
-    public void palindromeTest() {
-        Assertions.assertEquals(true, isPalindrome("abba"));
+    @ParameterizedTest
+    @DisplayName("Testing palindromes")
+    @ValueSource(strings = {"abba", "woow", "deed"})
+    public void nonPalindromeTest2(String word) {
+        Boolean actual = isPalindrome(word);
+        Assertions.assertEquals(true, actual);
     }
 
-
-    @Test
-    @DisplayName("Testing non palindrome")
-    public void nonPalindromeTest() {
-        Assertions.assertEquals(false, isPalindrome("hello"));
+    @ParameterizedTest
+    @DisplayName("Testing non palindromes")
+    @ValueSource(strings = {"hello", "martin", "shelby", "january"})
+    public void nonPalindromeTest(String word) {
+        Boolean actual = isPalindrome(word);
+        Assertions.assertFalse(actual);
     }
 
 }
