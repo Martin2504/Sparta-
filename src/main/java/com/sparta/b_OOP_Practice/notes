@@ -5,7 +5,7 @@ OOP - programming bases around the concept of objects
 
 A PIE
 
-Abstraction - Hiding implementation details away from the user
+Abstraction - Hiding implementation details away from the user      (exposing some functionality while hiding how it works, making it easier for the user)
 
 Polymorphism - The ability of a class to run a method in 2 or more different ways
 
@@ -14,3 +14,6 @@ Inheritance - Encourages code re-usability by letting object acquire properties 
 Encapsulation - Built on the idea of data hiding
                    - we restrict access to certain properties or methods of an object to whatever is calling the object
                    - make fields private and generate getters / setters
+
+
+Class - How we describe a state or behaviour of an object.

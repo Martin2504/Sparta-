@@ -17,7 +17,7 @@ public class OOP_Practice_Main {
 
         Car[] carArray = {redCar, blueFiesta, greenFocus};
 
-        for (Car c : carArray) {         // for each loop
+        for (Car c : carArray) {         // for each loop       (Polymorphism)
             c.honk();
         }
         System.out.println();
