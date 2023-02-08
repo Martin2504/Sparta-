@@ -21,6 +21,7 @@ public class Main {
             ask();
         } else {
             System.out.println(isPalindrome(result));
+            System.out.println(isPalindromeAPI(result));
         }
 
     }
@@ -40,6 +41,11 @@ public class Main {
             return false;
         }
 
+    }
+
+    // same solution using the .reverse() method in the JavaAPI (preferred)
+    public static boolean isPalindromeAPI (String result) {
+        return result.equals(new StringBuilder(result).reverse().toString());
     }
 
 
