@@ -4,7 +4,8 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        ask();
+//        ask();
+        System.out.println(longestPalindromeFinder("hello martin abba racecar reviver"));
     }
 
     public static void ask() {
@@ -13,15 +14,18 @@ public class Main {
         String result = scanner.next();
         lessThan3(result);
 
+
     }
 
-    public static void lessThan3(String result) {
+    public static boolean lessThan3(String result) {
         if (result.length() < 3) {
-            System.out.println("Please enter a word with 3 or more characters...");
-            ask();
+//            System.out.println("Please enter a word with 3 or more characters...");
+//            ask();
+            return true;
         } else {
-            System.out.println(isPalindrome(result));
-            System.out.println(isPalindromeAPI(result));
+//            System.out.println(isPalindrome(result));
+//            System.out.println(isPalindromeAPI(result));
+            return false;
         }
 
     }
@@ -43,11 +47,37 @@ public class Main {
 
     }
 
-    // same solution using the .reverse() method in the JavaAPI (preferred)
+    // same solution as isPalindrome using the .reverse() method in the JavaAPI (preferred)
     public static boolean isPalindromeAPI (String result) {
         return result.equals(new StringBuilder(result).reverse().toString());
     }
 
 
+    public static String longestPalindromeFinder(String result) {
+        String longestPalindrome = " ";
+        String equalPalindrome = "";
+        String[] splitToArrayOfStrings = result.split(" ");
+
+        for (String s : splitToArrayOfStrings) {
+            if (!lessThan3(s)){
+                if (isPalindromeAPI(s)) {
+                    if (s.length() == longestPalindrome.length()) {
+                        equalPalindrome = s;
+                    } else if (s.length() > longestPalindrome.length()) {
+                        longestPalindrome = s;
+                    }
+                }
+            }
+        }
+
+        if (equalPalindrome.length() > 2) {
+            return "Two palindromes of equal length: " + longestPalindrome + " and " + equalPalindrome;
+        } else if (longestPalindrome.length() > 2) {
+            return longestPalindrome;
+        } else {
+            return "no palindromes";
+        }
+
+    }
 
 }
