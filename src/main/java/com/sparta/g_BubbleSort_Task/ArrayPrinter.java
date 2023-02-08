@@ -1,7 +1,7 @@
 package com.sparta.g_BubbleSort_Task;
 
-public class printSorted {
-    public static void print(int primarySorted[]) {
+public class ArrayPrinter {
+    public static void printArray(int[] primarySorted) {
 
         int n = primarySorted.length;
         for (int i = 0; i < n; ++i) {

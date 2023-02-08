@@ -14,7 +14,7 @@ public class BubbleSortTest {
         int[] test = {3, 7, 23, 4, 1, 11};
         int[] expectedSortedArray = test;
         Arrays.sort(expectedSortedArray);
-        Assertions.assertEquals(Arrays.toString(expectedSortedArray), Arrays.toString(BubbleSort.Bubble(test)));
+        Assertions.assertEquals(Arrays.toString(expectedSortedArray), Arrays.toString(BubbleSort.sortArray(test)));
 
     }
 
