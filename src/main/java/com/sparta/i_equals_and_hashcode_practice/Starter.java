@@ -10,6 +10,7 @@ public class Starter {
 
         System.out.println(cust1.equals(cust2));
         System.out.println(cust2.equals(cust3));
+        System.out.println(cust2 == cust3);
 
     }
 }
