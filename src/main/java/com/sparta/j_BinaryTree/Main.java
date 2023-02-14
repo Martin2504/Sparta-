@@ -1,9 +1,11 @@
 package com.sparta.j_BinaryTree;
 
+import com.sparta.j_BinaryTree.Exceptions.ChildNotFoundException;
+
 import java.util.Arrays;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ChildNotFoundException {
 
         // Creating Tree
         BinaryTree tree = new BinaryTree();
@@ -26,19 +28,13 @@ public class Main {
 
         // Returning the value of the left child of the node containing the passed int
         BinaryTree.tempNode = BinaryTree.root;
-        try {
-            System.out.println(tree.getLeftChild(14));
-        } catch (Exception e) {
-            System.out.println("Value entered has no left child");
-        }
+        System.out.println(tree.getLeftChild(14));
+        System.out.println(tree.getLeftChild(1));
 
         // Returning the value of the right child of the node containing the passed int
         BinaryTree.tempNode = BinaryTree.root;
-        try {
-            System.out.println(tree.getRightChild(3));
-        } catch (Exception e) {
-            System.out.println("Value entered has no right child");
-        }
+        System.out.println(tree.getRightChild(3));
+        System.out.println(tree.getRightChild(7));
 
         // Printing the elements of the tree in ascending order
         System.out.println(Arrays.toString(tree.getSortedTreeAsc()));

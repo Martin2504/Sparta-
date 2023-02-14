@@ -1,5 +1,7 @@
 package com.sparta.j_BinaryTree;
 
+import com.sparta.j_BinaryTree.Exceptions.ChildNotFoundException;
+
 import java.util.Arrays;
 
 public class BinaryTree implements IBinaryTree {
@@ -67,47 +69,68 @@ public class BinaryTree implements IBinaryTree {
     // (2) Return value of the left child of that node
     @Override
     public int getLeftChild(int element) {
-
-        if (element < tempNode.getValue()) {
-            if (tempNode.getLeftChild().getValue() == element) {
+        try {
+            if (element < tempNode.getValue()) {
+                if (tempNode.getLeftChild().getValue() == element) {
+                    tempNode = tempNode.getLeftChild();
+                    if (!tempNode.isLeftChildEmpty()) {
+                        return tempNode.getLeftChild().getValue();
+                    } else {
+                        throw new ChildNotFoundException();
+                    }
+                }
                 tempNode = tempNode.getLeftChild();
-                return tempNode.getLeftChild().getValue();
-            }
-            tempNode = tempNode.getLeftChild();
-            return getLeftChild(element);
-        } else if (element > tempNode.getValue()) {
-            if (tempNode.getRightChild().getValue() == element) {
+                return getLeftChild(element);
+            } else if (element > tempNode.getValue()) {
+                if (tempNode.getRightChild().getValue() == element) {
+                    tempNode = tempNode.getRightChild();
+                    if (!tempNode.isLeftChildEmpty()) {
+                        return tempNode.getLeftChild().getValue();
+                    } else {
+                        throw new ChildNotFoundException();
+                    }
+                }
                 tempNode = tempNode.getRightChild();
-                return tempNode.getLeftChild().getValue();
+                return getLeftChild(element);
             }
-            tempNode = tempNode.getRightChild();
-            return getLeftChild(element);
+        } catch (ChildNotFoundException e) {
+            System.out.println(e.getMessage());
         }
         tempNode = root;
         return 0;
-
     }
 
     @Override
-    public int getRightChild(int element) {
-
-        if (element < tempNode.getValue()) {
-            if (tempNode.getLeftChild().getValue() == element) {
+    public int getRightChild(int element) throws ChildNotFoundException {
+        try {
+            if (element < tempNode.getValue()) {
+                if (tempNode.getLeftChild().getValue() == element) {
+                    tempNode = tempNode.getLeftChild();
+                    if (!tempNode.isRightChildEmpty()){
+                        return tempNode.getRightChild().getValue();
+                    } else {
+                        throw new ChildNotFoundException();
+                    }
+                }
                 tempNode = tempNode.getLeftChild();
-                return tempNode.getRightChild().getValue();
-            }
-            tempNode = tempNode.getLeftChild();
-            return getRightChild(element);
-        } else if (element > tempNode.getValue()) {
-            if (tempNode.getRightChild().getValue() == element) {
+                return getRightChild(element);
+            } else if (element > tempNode.getValue()) {
+                if (tempNode.getRightChild().getValue() == element) {
+                    tempNode = tempNode.getRightChild();
+                    if (!tempNode.isRightChildEmpty()){
+                        return tempNode.getRightChild().getValue();
+                    } else {
+                        throw new ChildNotFoundException();
+                    }
+                }
                 tempNode = tempNode.getRightChild();
-                return tempNode.getRightChild().getValue();
+                return getRightChild(element);
             }
-            tempNode = tempNode.getRightChild();
-            return getRightChild(element);
+        } catch (ChildNotFoundException e) {
+            System.out.println(e.getMessage());
         }
+        tempNode = root;
         return 0;
-
     }
 
 
