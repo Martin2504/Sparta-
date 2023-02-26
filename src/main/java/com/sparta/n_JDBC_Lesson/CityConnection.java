@@ -1,5 +1,6 @@
 package com.sparta.n_JDBC_Lesson;
 
+import java.io.IOException;
 import java.sql.*;
 
 public class CityConnection {
@@ -9,18 +10,15 @@ public class CityConnection {
         ResultSet resultSet = null;
 
         try {
-            connection = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/sakila",
-                    "root",
-                    "mynewsql123"
-            );
+            // Call connectionFactory
+            connection = ConnectionFactory.getConnection();
             statement = connection.createStatement();
             resultSet = statement.executeQuery("SELECT * FROM sakila.city");
             while (resultSet.next()) {
                 System.out.println(resultSet.getString("city" ) + resultSet.getInt("country_id"));
             }
 
-        } catch (SQLException e) {
+        } catch (SQLException | IOException e) {
             throw new RuntimeException(e);
         } finally {
             try {

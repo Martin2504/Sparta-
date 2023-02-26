@@ -6,6 +6,7 @@ import com.sparta.n_JDBC_Lesson.interfaces.DAO;
 
 import java.io.IOException;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ActorDAO implements DAO<Actor> {
@@ -18,9 +19,9 @@ public class ActorDAO implements DAO<Actor> {
             Connection connection = ConnectionFactory.getConnection();
             // Prepare a statement to be called
             preparedStatement = connection.prepareStatement(
-                    "SELECT * FROM actor WHERE last_name = ?"
-            );
+                    "SELECT * FROM actor WHERE last_name = ?"   );
             // Call the prepared statement, populating the 1st wildcard (index 1)
+            // with the name "HURT".
             preparedStatement.setString(1, "HURT");
             // Assign a query to a ResultSet
             rs = preparedStatement.executeQuery();
@@ -73,6 +74,7 @@ public class ActorDAO implements DAO<Actor> {
         // other methods outside the try{} block.
         Statement statement = null;
         ResultSet resultSet = null;
+        List<Actor> list = new ArrayList<>();
         try {
             // Call connectionFactory
             Connection connection = ConnectionFactory.getConnection();
@@ -82,15 +84,16 @@ public class ActorDAO implements DAO<Actor> {
             resultSet = statement.executeQuery("SELECT * FROM sakila.actor");
 
             /*
-            Below, use resultSet to create actor objects then add
-            to an appropriate list (populate actor class). Then return the list.
+            TASK:   Below, use resultSet to create actor objects then add
+            to an appropriate list. Then return the list.
              */
 
             // Read the data using next() method
             while (resultSet.next()) {
-//                System.out.println(resultSet.getInt(1)); // SQL columns indexed from 1
-//                System.out.println(resultSet.getString(2));
-//                System.out.println(resultSet.getString(3));
+                list.add(new Actor(resultSet.getInt(1),
+                        resultSet.getString(2),
+                        resultSet.getString(3),
+                        resultSet.getDate(4)));
             }
         } catch (SQLException |IOException e) {
             throw new RuntimeException(e);
@@ -102,6 +105,6 @@ public class ActorDAO implements DAO<Actor> {
                 throw new RuntimeException(e);
             }
         }
-        return null;
+        return list;
     }
 }
